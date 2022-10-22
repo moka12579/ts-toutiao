@@ -31,8 +31,6 @@ export default class Footer extends Vue{
   @Prop() private thumbs!:Function
   @user.State("user")
   private info!:{[propName:string]:any}
-  @comment.State("showPopup")
-  private showPopup!:boolean
   @comment.Mutation("changeShowPopup")
   private changeShowPopup!:(value:boolean) => void
   mounted():void{

@@ -114,6 +114,7 @@ export default class DetailView extends Vue{
     else this.skip+=10
     commentList({
       url:"/api/get_comment_list",
+      method:"post",
       data:{
         article_id:this.article_id,
         skip:this.skip

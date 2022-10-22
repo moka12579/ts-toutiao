@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-popup :value="showPopup" position="bottom" :style="{ height: '30%' }" @close="changeShowPopup(false);text=''" @click-overlay="changeShowPopup(false)">
+    <van-popup v-model="showPopup" position="bottom" :style="{ height: '30%' }">
       <van-field
           v-model="text"
           type="textarea"
@@ -19,7 +19,6 @@
 import {Button, Field, Popup} from "vant";
 import {Component, Prop, Vue} from "vue-property-decorator";
 import {namespace} from "vuex-class";
-import {computed} from "vue";
 const comment = namespace("comment")
 @Component({
   components:{
@@ -33,10 +32,15 @@ export default class Comment extends Vue{
   text:string = ""
   @Prop() private sendComment!:Function
   @comment.State("showPopup")
-  private showPopup!:boolean
+  private showPopup1!:boolean
+  get showPopup():boolean{
+    return this.showPopup1
+  }
+  set showPopup(status:boolean){
+    this.changeShowPopup(status)
+  }
   @comment.Mutation("changeShowPopup")
   private changeShowPopup!:(status:boolean) => void
-
 }
 
 </script>

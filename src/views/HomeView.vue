@@ -38,6 +38,7 @@ export default class HomeView extends Vue {
 
   @Mutation("CHANGE_LOADING") private changeLoading!:(value:boolean)=>void
   @Mutation("CHANGE_ERR") private changeErr!:(value:boolean)=>void
+  @Mutation("changeActive") private changeActive!:(i:number)=>void
 
   list: Array<Object> = []
   active: number = 0
@@ -103,7 +104,7 @@ export default class HomeView extends Vue {
     this.articleList = []
     this.changeLoading(true)
     this.data1(true)
-    // console.log(this.list[val])
+    this.changeActive(val)
   }
 
 }

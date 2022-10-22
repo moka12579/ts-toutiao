@@ -9,6 +9,7 @@
 <script lang="ts">
 import {Tabbar,TabbarItem} from "vant"
 import {Component, Prop, Vue} from "vue-property-decorator";
+import {Mutation, State} from "vuex-class";
 @Component({
   components:{
     TabBar,
@@ -17,22 +18,16 @@ import {Component, Prop, Vue} from "vue-property-decorator";
   }
 })
 export default class TabBar extends Vue{
-  @Prop()
-  private active1!:number
+  @State("active") private active!:number
+  @Mutation("changeActive") private changeActive!:Function
+  get active1():number{
+    return this.active
+  }
+  set active1(val:number){
+    this.changeActive(val)
+  }
+
 }
-// export default {
-//   name: "TabBar",
-//   components:{
-//     [Tabbar.name]: Tabbar,
-//     [TabbarItem.name]: TabbarItem
-//   },
-//   props:["active"],
-//   data(){
-//     return{
-//       active1:this.active
-//     }
-//   }
-// }
 </script>
 
 <style scoped>

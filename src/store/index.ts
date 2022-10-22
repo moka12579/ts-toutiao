@@ -41,6 +41,9 @@ export default new Vuex.Store({
     [CHANGE_ERR](state:any,status:boolean):void{
       state.err = status
     },
+    changeActive(state:any,i:number):void{
+      state.active = i
+    }
   },
   actions: {
   },

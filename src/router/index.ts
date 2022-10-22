@@ -24,6 +24,11 @@ const routes: Array<RouteConfig> = [
     path: '/publish',
     name: 'publish',
     component: () => import( '@/views/PublishArticleView.vue')
+  },
+  {
+    path: '/my',
+    name: 'my',
+    component: () => import( '@/views/MyView.vue')
   }
 ]
 

@@ -14,9 +14,9 @@ let vm = new Vue({
   store,
   render: h => h(App)
 })
-vm.$mount('#app')
-// init().then(res => {
-//   vm.$mount('#app')
-// }).catch(err => {
-//   Toast.fail("出错！")
-// })
+// vm.$mount('#app')
+init().then(res => {
+  vm.$mount('#app')
+}).catch(err => {
+  Toast.fail("出错！")
+})

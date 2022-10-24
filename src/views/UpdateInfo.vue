@@ -120,6 +120,10 @@ export default class UpdateInfo extends Vue{
 
   @user.State("uid")
   private uid!:string
+  @user.State("user")
+  private user!:{[propName:string]:any}
+  @user.Mutation("changeUserInfo")
+  private changeUserInfo!:Function
 
   onSubmit():void{
     updateInfos({
@@ -134,6 +138,12 @@ export default class UpdateInfo extends Vue{
       }
     }).then((res:AxiosResponse):void => {
       if (res.data.code === 0){
+        this.changeUserInfo({
+          avatar:this.avatar,
+          birthday:this.birthday,
+          sex:this.sex1,
+          nickname:this.nickname
+        })
         Toast({
           type:"success",
           message:res.data.msg,
@@ -176,17 +186,17 @@ export default class UpdateInfo extends Vue{
     this.birthday = new Date(value).toLocaleDateString()
     this.show=false
   }
-  changeSex(event:number):void{
-    this.sex1 = event === 2 ? "女" : "男"
+  changeSex(event:string):void{
+    this.sex1 = event === "2" ? "女" : "男"
   }
   mounted(){
-    const {nickname,avatar,birthday,sex2} = JSON.parse(store.getters.user).userInfo
+    const {nickname,avatar,birthday,sex2} = this.user
     this.nickname = nickname
     this.avatar = avatar
     this.birthday = birthday ? birthday : new Date().toLocaleDateString()
     let arr = birthday.split("/")
     this.currentDate = new Date(arr[0],arr[1],arr[2])
-    this.sex = sex2 === "男" ? 1 : 2
+    this.sex = sex2 === "男" ? "1" : "2"
     getToken({
       url:"/upload/token"
     }).then(response => {

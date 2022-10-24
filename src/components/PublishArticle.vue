@@ -191,69 +191,6 @@ export default class PublishArticle extends Vue{
     return true
   }
 }
-/*export default {
-  name: "PublishArticle",
-  components:{
-    [NavBar.name]:NavBar,
-    [Form.name]:Form,
-    [Field.name]:Field,
-    [Picker.name]:Picker,
-    [Popup.name]:Popup,
-    [Button.name]:Button,
-    [Uploader.name]:Uploader
-  },
-  mounted() {
-    cateList({
-      url:"/api/get_cate_list"
-    }).then(response => {
-      if (response.data.code === 0){
-        this.cate_list = response.data.data
-        this.columns = response.data.data.map(v=>v.name)
-      }
-    })
-    getToken({
-      url:"/upload/token"
-    }).then(response => {
-      if (response.data.code === 0){
-        this.uploadToken = response.data.token
-      }
-    })
-  },
-  methods:{
-    publish1(){
-      if (this.publish.imageSrc.length===2||this.publish.imageSrc.length>3){
-        Toast.fail("请上传一张或三张照片")
-        return
-      }
-      this.publish.imageSrc=this.publish.imageSrc.map(v => `http://toutiao.longxiaokj.com/${v}`)
-      publish({
-        url:"/api/add_article",
-        data:{
-          ...this.publish
-        }
-      }).then(res => {
-        if (res.data.code === 0){
-          Toast({
-            type:"success",
-            message:"发布成功",
-            onClose:() => {
-              router.push("/")
-            }
-          })
-        }else{
-          Toast.fail(res.data.msg)
-        }
-      })
-    },
-    beforeDelete(file){
-      let index = this.publish.imageSrc.findIndex(v => v === file.file.name)
-      if (index !== -1){
-        this.publish.imageSrc.splice(index,1)
-      }
-      return true
-    }
-  }
-}*/
 </script>
 
 <style lang="scss" scoped>

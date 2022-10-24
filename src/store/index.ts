@@ -53,7 +53,9 @@ export default new Vuex.Store({
       state:() =>({
         token:"",
         user:{},
-        uid:""
+        uid:"",
+        publish_num:"",
+        liked_num:""
       }),
       mutations:{
         [GET_USER_INFO](state:any):void{
@@ -71,6 +73,12 @@ export default new Vuex.Store({
         },
         changeUid(state:any,uid:string):void{
           state.uid = uid
+        },
+        changePublishSum(state:any,num:string):void{
+          state.publish_num = num
+        },
+        changeLikedSum(state:any,num:string):void{
+          state.liked_num = num
         }
       }
     },

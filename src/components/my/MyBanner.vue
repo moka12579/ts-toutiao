@@ -2,9 +2,9 @@
   <div class="banner">
     <div class="up">
       <div style="display: flex;align-items: center">
-        <img :src="avatar" alt="">
+        <img :src="!user.avatar ? 'http://toutiao.longxiaokj.com/1635908337872_9r24h3e9vq4.image/svg+xml' : user.avatar" alt="">
         <div style="font-size: 4.27vw;margin-left: 2.13vw">
-          {{nickname}}
+          {{user.nickname}}
         </div>
       </div>
       <div style="color: #908d8d">
@@ -40,19 +40,12 @@ const user = namespace("user")
   }
 })
 export default class MyBanner extends Vue{
-  nickname:string = ""
-  publish_num:number = 0
-  liked_num:number = 0
-  avatar:string = ""
   @user.State("user")
   private user!:{[propName:string]:any}
-  mounted(){
-    const {publish_num,liked_num,userInfo:{nickname,avatar}} = this.user
-    this.publish_num = publish_num
-    this.publish_num = liked_num
-    this.nickname = nickname
-    this.avatar = !avatar ? "http://toutiao.longxiaokj.com/1635908337872_9r24h3e9vq4.image/svg+xml" : avatar
-  }
+  @user.State("publish_num")
+  private publish_num!:string
+  @user.State("liked_num")
+  private liked_num!:string
 }
 </script>
 

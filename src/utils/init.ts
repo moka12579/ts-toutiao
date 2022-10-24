@@ -2,7 +2,7 @@ import {getUserInfo} from "@/api/user";
 import router from "@/router";
 import {Toast} from "vant";
 import store from "@/store";
-import {AxiosResponse} from "axios";
+import {AxiosError, AxiosResponse} from "axios";
 
 export const init = ():Promise<string> => {
     return new Promise((resolve, reject) => {
@@ -27,7 +27,7 @@ export const init = ():Promise<string> => {
                 })
             }
             resolve("success")
-        }).catch((err):void => {
+        }).catch((err:AxiosError):void => {
             // Toast.fail("请重新登录！")
             router.replace("/login").then((res):void => {
                 Toast.fail("请重新登录！")

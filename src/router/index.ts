@@ -78,15 +78,15 @@ const router = new VueRouter({
   routes
 })
 
-router.beforeEach((to:Route,form:Route,next:NavigationGuardNext<Vue>) => {
+router.beforeEach((to:Route,form:Route,next:NavigationGuardNext<Vue>):void => {
   const whiteList = ["/login","/register","/","/forget"]
-  if (whiteList.findIndex(v => v === to.path) !== -1) return next()
+  if (whiteList.findIndex((v:string):boolean => v === to.path) !== -1) return next()
   const {token} = localStorage
-  console.log(token)
   if(!token){
     next("/login")
   }
   next()
+
 })
 
 export default router

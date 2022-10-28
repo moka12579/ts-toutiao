@@ -110,3 +110,14 @@ export default class HomeView extends Vue {
 }
 
 </script>
+<style lang="scss" scoped>
+::v-deep .van-search__content{
+  border-radius: 10px;
+}
+::v-deep .van-field__control::-webkit-input-placeholder{
+  text-align: center;
+}
+::v-deep .van-icon-search{
+  display: none;
+}
+</style>

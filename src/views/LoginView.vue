@@ -91,6 +91,15 @@ export default class LoginView extends Vue{
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+.navBar{
+  background: #e54b43;
+  color: white;
+  ::v-deep .van-nav-bar__title,::v-deep .van-icon-arrow-left{
+    color: white;
+  }
+}
+::v-deep .van-form .van-cell__title{
+  width:fit-content;
+}
 </style>

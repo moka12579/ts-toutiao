@@ -1,6 +1,6 @@
 const { defineConfig } = require('@vue/cli-service')
-const tsImportPluginFactory = require('ts-import-plugin')
 const {merge} = require('webpack-merge')
+const tsImportPluginFactory = require('ts-import-plugin')
 
 module.exports = defineConfig({
   transpileDependencies: true,

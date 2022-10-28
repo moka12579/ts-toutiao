@@ -1,10 +1,12 @@
 import axios, {AxiosInstance, AxiosRequestConfig} from "axios";
 
+const baseURL:string = process.env.NODE_ENV === "development" ? "/dev-api" : "https://d33a5037-6c63-4e92-8bb1-30018ab701ea.bspapp.com/http";
+
 export class Interceptors{
     instance: AxiosInstance;
     constructor() {
         this.instance = axios.create({
-            baseURL: "/dev-api",
+            baseURL,
             timeout: 10000,
         });
     }
